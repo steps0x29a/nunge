@@ -1,19 +1,5 @@
-#
 # nunge v 0.1.0
-#
-# A Nim implementation of the OG munge by Th3S3cr3tAg3nt 
-# 
-# This program is HEAVILY inspired by the original munge by Th3S3cr3tAg3nt, but
-# adds its own twists to the inner workings. It also adds a few more levels of details 
-# to the wordlist generation process.
-#
-# Credits for the basic idea go to Th3S3cr3tAg3nt, who wrote the original munge in python.
-# Find the original repo here: https://github.com/Th3S3cr3tAg3nt/Munge
-# 
-# nunge was written in nim by steps0x29a (https://github.com/steps0x29a) and is licensed under the MIT license.
-#
 # Find the repo here: https://github.com/steps0x29a/nunge
-# 
 
 import unicode
 import std/tables
