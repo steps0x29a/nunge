@@ -2,7 +2,7 @@
 
 `nunge` is a nim rewrite of the OG `munge` by [Th3S3cr3tAg3nt](https://github.com/Th3S3cr3tAg3nt/Munge).
 
-This program is *heavily* inspired by the original munge, but adds its own twists to the innerworkings as well as a few more levels of detail to the wordlist generation process.
+This program is *heavily* inspired by the original munge, but adds its own twists to the inner workings as well as a few more levels of detail to the wordlist generation process.
 
 Credits go to [Th3S3cr3tAg3nt](https://github.com/Th3S3cr3tAg3nt) for their work on the original `munge`.
 
