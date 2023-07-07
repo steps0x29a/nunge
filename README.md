@@ -15,7 +15,7 @@ No installation is required. Simply download or build a binary and run it (see b
 Show help:
 
 ```
-./nunge.exe --help
+./nunge --help
 
 Options:
   -h, --help
