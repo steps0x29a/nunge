@@ -1,3 +1,15 @@
+<h1 align="center">
+  	alohomora
+</h1>
+
+<p align="center">
+    <img alt="AppVeyor" src="https://img.shields.io/appveyor/ci/steps0x29a/nunge?style=plastic">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/steps0x29a/nunge?style=plastic">
+    <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/steps0x29a/nunge?style=plastic">    
+    <img alt="GitHub" src="https://img.shields.io/github/license/steps0x29a/nunge?style=plastic">
+    <img alt="Contributions" src="https://img.shields.io/badge/contributions-welcome-brightgreen?style=plastic">
+</p>
+
 # nunge
 
 `nunge` is a nim rewrite of the OG `munge` by [Th3S3cr3tAg3nt](https://github.com/Th3S3cr3tAg3nt/Munge).
