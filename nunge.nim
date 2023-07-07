@@ -1,7 +1,22 @@
-# import std/strutils
+#
+# nunge v 0.1.0
+#
+# A Nim implementation of the OG munge by Th3S3cr3tAg3nt 
+# 
+# This program is HEAVILY inspired by the original munge by Th3S3cr3tAg3nt, but
+# adds its own twists to the inner workings. It also adds a few more levels of details 
+# to the wordlist generation process.
+#
+# Credits for the basic idea go to Th3S3cr3tAg3nt, who wrote the original munge in python.
+# Find the original repo here: https://github.com/Th3S3cr3tAg3nt/Munge
+# 
+# nunge was written in nim by steps0x29a (https://github.com/steps0x29a) and is licensed under the MIT license.
+#
+# Find the repo here: https://github.com/steps0x29a/nunge
+# 
+
 import unicode
 import std/tables
-import parseutils
 import std/strutils
 import std/strformat
 import os
@@ -9,24 +24,36 @@ import argparse
 
 var level = 5
 var make_unique:bool = false
-
 var wordlist = newSeq[string]()
-
 var arg_words = newSeq[string]()
 var inputfile:string = ""
 var outputfile:string = ""
 
-var total:int64 = 0
+let leet_tables: array[12, Table[char, char]] = [
+  {'e': '3'}.toTable(),
+  {'a': '4'}.toTable(),
+  {'o': '0'}.toTable(),
+  {'i': '!'}.toTable(),
+  {'i': '1'}.toTable(),
+  {'l': '1'}.toTable(),
+  {'a': '@'}.toTable(),
+  {'s': '$'}.toTable(),
+  {'e': '3', 'a': '4', 'o': '0', 'i': '1', 's': '$'}.toTable(),
+  {'e': '3', 'a': '@', 'o': '0', 'i': '1', 's': '$'}.toTable(),
+  {'e': '3', 'a': '4', 'o': '0', 'i': '!', 's': '$'}.toTable(),
+  {'e': '3', 'a': '4', 'o': '0', 'l': '1', 's': '$'}.toTable(),
+]
 
+# Add a word to the wordlist.
+# If unique mode is on, make sure it is not in there yet.
 proc add_word(word:string) =
   if word.len > 0:
-    # let stripped = unicode.strip(word)
     if make_unique:
       if wordlist.contains(word):
         return
     wordlist.add(word);
-    total += 1
 
+# Generates a leet speak version of a word using a map of replacement tables
 proc leet_speak(word:string, map:Table[char, char]):string =
   var tmp = word
   for key, value in map:
@@ -48,27 +75,25 @@ proc munge(word:string, level:int) =
   # if level > 3:
   #   echo "Level 3 implementation still missing";
 
+  # Level 5 and above get the leet speak treatment
   if level > 4:
-    add_word(leet_speak(word, {'e': '3'}.toTable()))
-    add_word(leet_speak(word, {'a': '4'}.toTable()))
-    add_word(leet_speak(word, {'o': '0'}.toTable()))
-    add_word(leet_speak(word, {'i': '!'}.toTable()))
-    add_word(leet_speak(word, {'i': '1'}.toTable()))
-    add_word(leet_speak(word, {'l': '1'}.toTable()))
-    add_word(leet_speak(word, {'a': '@'}.toTable()))
-    add_word(leet_speak(word, {'s': '$'}.toTable()))
+    for leet_table in leet_tables:
+      add_word(leet_speak(word, leet_table))
+      add_word(leet_speak(word.capitalize(), leet_table))
+  
+  # Level 6 and above get the sPoNgEbOb treatment
+  if level > 5:
+    echo "Level 5 implementation still missing";
+  
+  if level > 6:
+    echo "Level 6 implementation still missing";
 
-    # leet speak combinations
-    add_word(leet_speak(word, {'e': '3', 'a': '4', 'o': '0', 'i': '1', 's': '$'}.toTable()))
-    add_word(leet_speak(word, {'e': '3', 'a': '@', 'o': '0', 'i': '1', 's': '$'}.toTable()))
-    add_word(leet_speak(word, {'e': '3', 'a': '4', 'o': '0', 'i': '!', 's': '$'}.toTable()))
-    add_word(leet_speak(word, {'e': '3', 'a': '4', 'o': '0', 'l': '1', 's': '$'}.toTable()))
+  if level > 7:
+    echo "Level 7 implementation still missing";
 
-    # leet speak combinations (capitalized)
-    add_word(leet_speak(word.capitalize(), {'e': '3', 'a': '4', 'o': '0', 'i': '1', 's': '$'}.toTable()))
-    add_word(leet_speak(word.capitalize(), {'e': '3', 'a': '@', 'o': '0', 'i': '1', 's': '$'}.toTable()))
-    add_word(leet_speak(word.capitalize(), {'e': '3', 'a': '4', 'o': '0', 'i': '1', 's': '$'}.toTable()))
-    add_word(leet_speak(word.capitalize(), {'e': '3', 'a': '4', 'o': '0', 'l': '1', 's': '$'}.toTable()))
+  if level > 8:
+    echo "Level 8 implementation still missing";
+
 
 proc munge_word(word_arg:string, level:int) = 
   let word = unicode.strip(word_arg)
@@ -135,9 +160,7 @@ try:
   
   # If output file given, write to it, else print to stdout
   if opts.output != "":
-    # stdout.write("Writing $1 words to $2..." % [len(wordlist), opts.output])
     stdout.write(fmt("Writing {len(wordlist)} words to {opts.output}  "))
-    # echo("Saving ", len(wordlist), " words to ", opts.output)
     let out_handle = open(opts.output, fmWrite)
     defer: out_handle.close()
     for word in wordlist:
