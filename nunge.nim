@@ -1,4 +1,4 @@
-# nunge v 0.2.0
+# nunge v 0.2.1
 # Find the repo here: https://github.com/steps0x29a/nunge
 
 import unicode
@@ -66,8 +66,9 @@ proc spongebob(word: string, reverse: bool) : string =
   return tmp
 
 proc munge(word:string, level:int) = 
+  add_word(word)
+
   if level > 0:
-    add_word(word)
     add_word(word.toLower())
     add_word(word.toUpper())
     add_word(word.capitalize())
