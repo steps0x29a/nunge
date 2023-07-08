@@ -1,4 +1,4 @@
-# nunge v 0.1.0
+# nunge v 0.2.0
 # Find the repo here: https://github.com/steps0x29a/nunge
 
 import unicode
@@ -194,12 +194,12 @@ try:
   
   # If output file given, write to it, else print to stdout
   if opts.output != "":
-    stdout.write(fmt("Writing {len(wordlist)} words to {opts.output}  "))
+    stdout.write(fmt("Writing {len(wordlist)} words to {opts.output}..."))
     let out_handle = open(opts.output, fmWrite)
     defer: out_handle.close()
     for word in wordlist:
       out_handle.writeLine(word)
-    echo "DONE"
+    echo "OK"
   else:
     for word in wordlist:
       echo word
