@@ -7,6 +7,7 @@ import std/strutils
 import std/strformat
 import os
 import argparse
+import math
 
 var level = 5
 var make_unique:bool = false
@@ -46,9 +47,19 @@ proc leet_speak(word:string, map:Table[char, char]):string =
     tmp = tmp.replace(key, value)
   return tmp
 
+proc spongebob(word: string, reverse: bool) : string = 
+  var tmp = word.toLower()
+  let marker = if reverse: 1 else: 0
+  for i in 0 ..< tmp.len:
+    if i mod  2 == marker:
+      let c = Rune(ord(tmp[i]))
+      tmp[i] = char(unicode.toUpper(c))
+  return tmp
+
 proc munge(word:string, level:int) = 
   if level > 0:
     add_word(word)
+    add_word(word.toLower())
     add_word(word.toUpper())
     add_word(word.capitalize())
   
@@ -69,7 +80,8 @@ proc munge(word:string, level:int) =
   
   # Level 6 and above get the sPoNgEbOb treatment
   if level > 5:
-    echo "Level 5 implementation still missing";
+    add_word(spongebob(word, false))
+    add_word(spongebob(word, true))
   
   if level > 6:
     echo "Level 6 implementation still missing";
