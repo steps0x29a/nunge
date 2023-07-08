@@ -5,8 +5,7 @@
 <p align="center">
     <img alt="AppVeyor" src="https://img.shields.io/appveyor/ci/steps0x29a/nunge?style=plastic">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/steps0x29a/nunge?style=plastic">
-    <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/steps0x29a/nunge?style=plastic">    
-    <img alt="GitHub" src="https://img.shields.io/github/license/steps0x29a/nunge?style=plastic">
+    <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/steps0x29a/nunge?style=plastic">
     <img alt="Contributions" src="https://img.shields.io/badge/contributions-welcome-brightgreen?style=plastic">
     <img alt="License" src="https://img.shields.io/github/license/steps0x29a/nunge?style=plastic">
     <img alt="Static Badge" src="https://img.shields.io/badge/version-0.2.0-green?style=plastic">
