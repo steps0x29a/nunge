@@ -43,5 +43,6 @@ Options:
 Requires a working installation of [nim](https://nim-lang.org/install.html), of course.
 
 ```
+nimble install argparse
 nim c -d:release nunge.nim
 ```
