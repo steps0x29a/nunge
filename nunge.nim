@@ -7,7 +7,6 @@ import std/strutils
 import std/strformat
 import os
 import argparse
-import math
 
 var level = 5
 var make_unique:bool = false
@@ -47,6 +46,16 @@ proc leet_speak(word:string, map:Table[char, char]):string =
     tmp = tmp.replace(key, value)
   return tmp
 
+# For some reason, nim wouldn't allow me to use the built-in reverse() function,
+# so I built my own.
+proc reverse_str(word:string) : string = 
+  var tmp = word
+  for i in 0 ..< tmp.len div 2:
+    let c = tmp[i]
+    tmp[i] = tmp[tmp.len - i - 1]
+    tmp[tmp.len - i - 1] = c
+  return tmp
+
 proc spongebob(word: string, reverse: bool) : string = 
   var tmp = word.toLower()
   let marker = if reverse: 1 else: 0
@@ -69,8 +78,13 @@ proc munge(word:string, level:int) =
   if level > 2:
     add_word(word.capitalize().swapCase())
   
-  # if level > 3:
-  #   echo "Level 3 implementation still missing";
+  # Add reverse word
+  if level > 3:
+    # add_word(reverse_str(word))
+    add_word(word.reverse_str())
+    add_word(word.toLower().reverse_str())
+    add_word(word.toUpper().reverse_str())
+    add_word(word.capitalize().reverse_str())
 
   # Level 5 and above get the leet speak treatment
   if level > 4:
