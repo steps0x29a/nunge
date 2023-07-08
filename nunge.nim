@@ -97,14 +97,14 @@ proc munge(word:string, level:int) =
     add_word(spongebob(word, false))
     add_word(spongebob(word, true))
   
-  if level > 6:
-    echo "Level 6 implementation still missing";
+  # if level > 6:
+  #   echo "Level 6 implementation still missing";
 
-  if level > 7:
-    echo "Level 7 implementation still missing";
+  # if level > 7:
+  #   echo "Level 7 implementation still missing";
 
-  if level > 8:
-    echo "Level 8 implementation still missing";
+  # if level > 8:
+  #   echo "Level 8 implementation still missing";
 
 
 proc munge_word(word_arg:string, level:int) = 
@@ -155,8 +155,6 @@ proc munge_word(word_arg:string, level:int) =
     let additions:array[55, string] = ["00", "02", "03", "04", "05", "06", "19", "20", "25", "26", "27", "28", "29", "007", "1234567", "12345678", "111111", "111", "777", "666", "420", "101", "33", "44", "55", "66", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98"]
     for addition in additions:
       munge(addition & word & addition, level)
-
-  #let prefixes:array[7, string] = ["1", "123456", "12", "2", "123", "!", ".", "?", "_", "0", "01", "69", "21", "22", "23", "1234", "8", "9", "10", "11", "12", "13", "3", "4", "5", "6", "7", "07", "08", "09", "14", "15", "16", "17", "18", "19", "24", "77", "88", "99", "12345", "123456789", "00", "02", "03", "04", "05", "06", "19", "20", "25", "26", "27", "28", "29", "007", "1234567", "12345678", "111111", "111", "777", "666", "420", "101", "33", "44", "55", "66", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98"]
 
 var p = newParser:
   option("-i", "--input", help="Read words from this file, line by line")
